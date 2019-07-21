@@ -69,7 +69,7 @@ class DocqaEnvironment(object):
                corpus_dir,
                model_dir,
                nltk_dir,
-               async=0,
+               async_=0,
                batch_size=32,
                corpus_name="wiki",
                debug_mode=False,
@@ -104,7 +104,7 @@ class DocqaEnvironment(object):
           When step="latest", the lastest checkpoint in model_dir will be used.
     """
 
-    self.async = async
+    self.async_ = async_
     self.debug_mode = debug_mode
     self.max_tokens = max_tokens
 
@@ -143,9 +143,9 @@ class DocqaEnvironment(object):
 
     self.model.set_inputs([temp_data], ResourceLoader())
 
-    if self.async > 0:
+    if self.async_ > 0:
       self.evaluator_runner = AysncEvaluatorRunner(self.evaluators, self.model,
-                                                   self.async)
+                                                   self.async_)
       inputs = self.evaluator_runner.dequeue_op
     else:
       self.evaluator_runner = EvaluatorRunner(self.evaluators, self.model)

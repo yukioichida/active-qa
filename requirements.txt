@@ -10,5 +10,5 @@ portpicker
 pygtrie
 sentencepiece
 tensorflow
-tensorflow-tensorboard
+tensorboard
 tqdm
