@@ -7,6 +7,30 @@ library. No support is provided.
 
 *If you use this code for your research, please [cite the paper](#bibtex).*
 
+## NOTE: Changes made for Python 3 compatibility
+This fork is modified to work with Python 3; it was tested on Python 3.6 and 
+may also work with Python 3.7 (or lower versions), but currently requires Tensorflow
+1.12 which does not have a Python 3.7 build. The changes made are to do
+with:
+- imports (e.g. importing `zip_longest` instead of `izip_longest`) 
+- string encoding/decoding
+- a dict's `values()` method returning a non-indexable `dict_values` object in
+Python 3 instead of a `list` object as in Python 2
+
+The `requirements.txt` has also been modified to specify the
+specific package versions required:
+- `tensorflow==1.12.2` (see https://github.com/google/active-qa/issues/16)
+- `pandas==0.24.2` (pandas 0.25 gives the error
+`AttributeError: module 'pandas' has no attribute 'core'` when starting the
+environment server)
+- `pygtrie==2.2` (pygtrie 2.3 does not have `pygtrie._SENTINEL`, which is imported
+by this repository)
+
+### adding relative imports to generated protobuf modules
+`compile_protos.sh` has been modified to add relative imports to the generated
+`px/proto/*_grpc.py` files, as `rpc_tools.protoc` does not generate these
+appropriately for Python 3.
+
 ## Introduction
 ActiveQA is an agent that transforms questions online in order to find the best
 answers. The agent consists of a Tensorflow model that reformulates questions

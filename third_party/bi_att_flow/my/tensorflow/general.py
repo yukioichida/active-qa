@@ -2,7 +2,10 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-from itertools import izip_longest as zip_longest
+try:
+  from itertools import zip_longest
+except:
+  from itertools import izip_longest as zip_longest
 
 import tensorflow as tf
 from functools import reduce

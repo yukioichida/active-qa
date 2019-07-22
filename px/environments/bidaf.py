@@ -93,7 +93,7 @@ class BidafEnvironment(object):
     for dataset in self.datasets:
       self.data[dataset] = bidaf_data.read_data(
           self.config, dataset, True, data_filter=data_filter)
-    bidaf_data.update_config(self.config, self.data.values())
+    bidaf_data.update_config(self.config, list(self.data.values()))
 
     models = bidaf_model.get_model(self.config)
     self.evaluator = bidaf_eval.MultiGPUF1Evaluator(self.config, models)

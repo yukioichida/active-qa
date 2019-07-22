@@ -1,3 +1,5 @@
+tensorflow==1.12.2
+tensorboard
 absl-py
 google-apputils
 grpcio
@@ -5,10 +7,8 @@ grpcio-tools
 keras
 nltk
 numpy
-pandas
+pandas==0.24.2
 portpicker
-pygtrie
+pygtrie==2.2
 sentencepiece
-tensorflow
-tensorboard
 tqdm

@@ -217,7 +217,7 @@ class Reformulator(object):
         if question.startswith(prefix):
           question = question[len(prefix):].lstrip()
         tokenized_questions.append(" ".join(
-            self.sentpiece.EncodeAsPieces(question.encode("utf-8"))))
+            self.sentpiece.EncodeAsPieces(question)))
     else:
       tokenized_questions = questions
     if prefix:
@@ -235,8 +235,8 @@ class Reformulator(object):
       A string where the tokens have been joined into words.
     """
     if self.hparams.subword_option == "spm":
-      text = self.sentpiece.DecodePieces(text.split(" "))
-    return text.decode("utf-8")
+      text = self.sentpiece.DecodePieces(text.decode('utf-8').split(" "))
+    return text
 
   def reformulate(self, questions, inference_mode, trie_excludes=None):
     """Reformulates questions given original ones.

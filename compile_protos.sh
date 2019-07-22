@@ -23,4 +23,5 @@ pushd $WORK_DIR || exit 1
   --python_out=./proto --grpc_python_out=./proto ./proto/aqa.proto
   python -m grpc_tools.protoc -I./proto \
   --python_out=./proto --grpc_python_out=./proto ./proto/reformulator.proto
+  perl -i -pe 's/^(import.*_pb2) /from . \1 /' ./proto/*_grpc.py
 popd
