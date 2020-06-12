@@ -6,7 +6,12 @@ Small forewarning, this is still much more of a research codebase than a
 library. No support is provided.
 
 *If you use this code for your research, please [cite the paper](#bibtex).*
-
+## NOTE: Inference server
+- Run all setup and preprocessing steps below
+- [Start the environment server](run_environment_server.sh)
+- [Start the inference server](run_inference_server.sh)
+### Inference server endpoints
+- GET: /paraphrase/{input_sentence}
 ## NOTE: Changes made for Python 3 compatibility
 This fork is modified to work with Python 3; it was tested on Python 3.6 and partially on Python 3.7 (preprocessing
 and conversion to SearchQA format were not tested). The changes made are to do
